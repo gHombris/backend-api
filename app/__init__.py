@@ -1,11 +1,12 @@
 # app/__init__.py
-import os  # <<< Adicione este import
+import os
 from flask import Flask
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
 
 db = SQLAlchemy()
-
+migrate = Migrate()
 
 def create_app():
     app = Flask(__name__, instance_relative_config=True)  # <<< Adicione instance_relative_config=True
@@ -25,7 +26,9 @@ def create_app():
     # -----------------------------
 
     db.init_app(app)
+    migrate.init_app(app, db)
 
+    from . import models
     from . import routes
     app.register_blueprint(routes.api_bp)
 
