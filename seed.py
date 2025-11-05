@@ -1,9 +1,5 @@
-# seed.py
 import json
-
-# 1. Importamos a função 'create_app' e a instância 'db'
 from app import create_app, db
-# 2. Importamos o modelo 'User'
 from app.models import User
 
 # Dados de teste para nossas 8 jogadoras
@@ -15,7 +11,7 @@ jogadoras_data = [
     { 'id': 5, 'nome': "Ester", 'email': "ester@skillher.com", 'xp': 35, 'rank': 'Ferro', 'treinos_concluidos': 4, 'sequencia': 0, 'avatar_filename': 'ester.png' },
     { 'id': 6, 'nome': "Andreia", 'email': "andreia@skillher.com", 'xp': 30, 'rank': 'Ferro', 'treinos_concluidos': 3, 'sequencia': 0, 'avatar_filename': 'andreia.png' },
     { 'id': 7, 'nome': "Monique", 'email': "monique@skillher.com", 'xp': 15, 'rank': 'Ferro', 'treinos_concluidos': 1, 'sequencia': 1, 'avatar_filename': 'monique.png' },
-    { 'id': 8, 'nome': "Luana Pereira", 'email': "luana@skillher.com", 'xp': 10, 'rank': 'Ferro', 'treinos_concluidos': 0, 'sequencia': 0, 'avatar_filename': 'luana_pereira.png' }
+    { 'id': 8, 'nome': "Luana Pereira", 'email': "luana@skillher.com", 'xp': 10, 'rank': 'Ferro', 'treinos_concluidos': 0, 'sequencia': 0, 'avatar_filename': 'luana.png' }
 ]
 
 def run_seed():
@@ -24,8 +20,8 @@ def run_seed():
     """
     print("--- INICIANDO SEED SCRIPT ---")
 
-    # 3. Criamos um "contexto de aplicação" para o script
-    #    Isso é necessário para que o SQLAlchemy saiba com qual banco de dados se conectar.
+
+ 
     app = create_app()
     with app.app_context():
         # Limpa a tabela de usuários antes de adicionar novos
@@ -34,7 +30,7 @@ def run_seed():
         
         print("Criando novas usuárias...")
         
-        # 4. Itera sobre nossos dados de teste e cria objetos User
+        # Itera sobre nossos dados de teste e cria objetos User
         for data in jogadoras_data:
             # Cria uma nova instância do modelo User
             new_user = User(
@@ -53,7 +49,7 @@ def run_seed():
             # Adiciona a nova usuária à sessão do banco de dados
             db.session.add(new_user)
 
-        # 5. "Commita" (salva) todas as novas usuárias no banco de dados de uma vez.
+        #  "Commita" (salva) todas as novas usuárias no banco de dados de uma vez.
         try:
             db.session.commit()
             print(f"Sucesso! {len(jogadoras_data)} jogadoras foram adicionadas ao banco.")

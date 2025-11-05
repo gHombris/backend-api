@@ -37,7 +37,7 @@ class User(db.Model):
             'rank': self.rank,
             'treinos_concluidos': self.treinos_concluidos,
             'sequencia': self.sequencia,
-            'avatar_filename': self.avatar_filename
+            'avatar': self.avatar_filename
             # Não inclua o 'password_hash' por segurança!
         }
 
