@@ -12,4 +12,4 @@ flask db upgrade
 echo ">>> PASSO 3: Populando o banco (seed)..."
 python seed.py
 
-echo ">>> BUILD CONCLUÍDO!"
+echo ">>> BUILD CONCLUÍDO"
